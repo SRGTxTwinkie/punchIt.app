@@ -1,5 +1,6 @@
 import React from "react";
 import HoursTicker from "./hoursTicker";
+import Footer from "./footer";
 
 export default class MainComp extends React.Component {
     constructor(props) {
@@ -22,6 +23,7 @@ export default class MainComp extends React.Component {
 
   async handleTimeChange(e) {
     await this.setState({punchTime: e.target.value});
+    this.onSubmit();
   }
 
   async handleHourChangeOne(value) {
@@ -141,7 +143,7 @@ export default class MainComp extends React.Component {
             tabIndex="2" 
             className={"smallInput marginRight5"}
             type="number"
-            step="0.01"
+            step="0.1"
             min="0"
             style={{fontSize: "20px"}}
             value={this.state.currentHours}
@@ -151,7 +153,7 @@ export default class MainComp extends React.Component {
             tabIndex="3"
             className={"smallInput marginLeft5"}
             type="number"
-            step="0.01"
+            step="0.1"
             min="0"
             style={{fontSize: "20px"}}
             value={this.state.hoursNeeded}
@@ -188,6 +190,7 @@ export default class MainComp extends React.Component {
 
           <p id={"punchTime"} style={{fontSize: "25px"}} className={"fadeIn scaleVwVh"}></p>
           <p id={"timeRemaing"} style={{fontSize: "25px"}} className={"fadeIn scaleVwVh"}></p>
+          <Footer />
         </div>
     );
   }

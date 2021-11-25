@@ -77,7 +77,7 @@ body {
 
 @keyframes fadeIn {
     from {
-        transform: translatey(75px);
+        transform: translatey(55px);
         opacity: 0;
     }
     to {
