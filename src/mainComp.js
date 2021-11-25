@@ -98,14 +98,36 @@ export default class MainComp extends React.Component {
     return (
         <div className={"inlineBlock"}>
           <div className={"centeredText webpageCentered"} id={"punch-time"}>
-            <input className={"tinyText noMargin noPadding"} type="checkbox" checked={this.state.showButtons} onChange={this.showButtonsChange}></input>
+            <input
+              className={"noMargin noPadding"}
+              type="checkbox"
+              checked={this.state.showButtons}
+              onChange={this.showButtonsChange}>
+
+              </input>
             <br />
             <label className={"tinyText noMargin noPadding"}>Show Radios</label>
             <p>When did you punch in?</p>
-            <input type="text" value={this.state.punchTime} onChange={this.handleTimeChange} className={"smallerInput"}></input>
+            <input
+              type="text"
+              value={this.state.punchTime}
+              onChange={this.handleTimeChange}
+              className={"smallInput"}
+              style={{fontSize: "20px", textAlign: "left", paddingLeft: "3px"}} >
+
+              </input>
+            
             <label> 24 Hour</label>
             <br />
-            <input type="time" value={this.state.punchTime} onChange={this.handleTimeChange} tabIndex="1"></input>
+            <input
+              type="time"
+              value={this.state.punchTime}
+              onChange={this.handleTimeChange}
+              tabIndex="1"
+              style={{fontSize: "20px"}} >
+
+              </input>
+            
             <label> 12 Hour</label>
             <br />
             <br />
@@ -121,6 +143,7 @@ export default class MainComp extends React.Component {
             type="number"
             step="0.01"
             min="0"
+            style={{fontSize: "20px"}}
             value={this.state.currentHours}
             onChange={(e) => this.handleHourChangeOne(e.target.value)}/>
           
@@ -130,6 +153,7 @@ export default class MainComp extends React.Component {
             type="number"
             step="0.01"
             min="0"
+            style={{fontSize: "20px"}}
             value={this.state.hoursNeeded}
             onChange={(e) => this.handleHourChangeTwo(e.target.value)}/>
           
@@ -162,8 +186,8 @@ export default class MainComp extends React.Component {
             Get times
           </button>
 
-          <p id={"punchTime"} className={"fadeIn scaleVwVh"}></p>
-          <p id={"timeRemaing"} className={"fadeIn scaleVwVh"}></p>
+          <p id={"punchTime"} style={{fontSize: "25px"}} className={"fadeIn scaleVwVh"}></p>
+          <p id={"timeRemaing"} style={{fontSize: "25px"}} className={"fadeIn scaleVwVh"}></p>
         </div>
     );
   }

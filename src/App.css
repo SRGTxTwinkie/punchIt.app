@@ -1,12 +1,10 @@
 body {
     font-family: system-ui;
-    /* center the element */
+    font-size: 20px;
     margin: 0 auto;
-    /* make the element full width */
     width: 100%;
 
 }
-
 
 .centeredText {
     text-align: center;
@@ -42,7 +40,10 @@ body {
 }
 
 .smallInput {
-    width: 95px;
+    width: 130px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .labelPadding {
@@ -50,7 +51,7 @@ body {
 }
 
 .sideMargins {
-    margin: 4px;
+    margin: 0 7px 0 7px;
 }
 
 .marginRight10 {
@@ -90,8 +91,10 @@ body {
 }
 
 .button {
-    min-width: 100px;
-    max-width: 100px;
+    min-width: 200px;
+    max-width: 200px;
+    height: 50px;
+    font-size: 20px;
 }
 
 .smallerInput {
