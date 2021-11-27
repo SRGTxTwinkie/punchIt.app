@@ -77,15 +77,20 @@ export default class MainComp extends React.Component {
     this.setState({lastPressed: "getTimes"});
 
     var times = []; 
-    var newDate = this.generateDate();
     for(var i = 0; i < 8; i++){
-      newDate.setTime(newDate.getTime() + i * 60 * 60 * 1000);
+      var newDate = this.generateDate();
+      newDate = this.addHoursToDate(newDate, i + 1);
       times[i] = `${i + 1} Hours: ` + newDate.toLocaleTimeString(); 
     }
     
     this.appendTimes("Punch out at these times:", times.join("<br>"));
     
   }
+
+  addHoursToDate(date, hours) {
+    return new Date(new Date(date).setHours(date.getHours() + hours));
+  }
+
 
   appendTimes(out1, out2){
     var punchTimeP = document.getElementById("punchTime");
