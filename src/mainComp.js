@@ -10,7 +10,6 @@ export default class MainComp extends React.Component {
         currentHours: "35",
         hoursNeeded: "40",
         punchTime: "08:00",
-        showButtons: true,
         lastPressed: ""
       };
 
@@ -115,7 +114,8 @@ export default class MainComp extends React.Component {
     var currentTime = new Date();
     var hours = currentTime.getHours();
     var minutes = currentTime.getMinutes();
-    currentTime = String(hours + ":" + minutes);
+    currentTime = String(hours + ":" + String("0" + minutes).slice(-2));
+    console.log(currentTime);
     await this.setState({punchTime: currentTime});
     this.getTimes();
   }
@@ -127,17 +127,14 @@ export default class MainComp extends React.Component {
             <input
               className={"noMargin noPadding"}
               type="checkbox"
-              checked={this.state.showButtons}
-              onChange={this.showButtonsChange}>
+              onChange={this.showButtonsChange} />
 
-              </input>
-            <br />
-            <label className={"tinyText noMargin noPadding"}>Show Radios</label>
+            <label className={"tinyText noMargin noPadding"} style={{float: "clear both"}}> Show Radios</label>
+
             <p>When did you punch in?</p>
             <button
               style={{
-                      float:"left",
-                      transform:"translateX(70px)",
+                      transform:"translateX(-4px)",
                       width:"140px"
                     }}
               onClick={this.setTime}>

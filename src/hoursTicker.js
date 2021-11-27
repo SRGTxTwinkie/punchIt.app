@@ -13,7 +13,7 @@ export default class HoursTicker extends React.Component {
 
     render() {
         const styles = {
-            visibility: this.props.showSelf === true ? "visible" : "hidden"
+            display: this.props.showSelf === true ? "inline-block" : "none"
         }
 
         return (
