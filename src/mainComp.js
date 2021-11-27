@@ -10,7 +10,8 @@ export default class MainComp extends React.Component {
         currentHours: "35",
         hoursNeeded: "40",
         punchTime: "08:00",
-        showButtons: true
+        showButtons: true,
+        lastPressed: ""
       };
 
       this.showButtonsChange = this.showButtonsChange.bind(this);
@@ -18,22 +19,33 @@ export default class MainComp extends React.Component {
       this.handleHourChangeTwo = this.handleHourChangeTwo.bind(this);
       this.handleTimeChange = this.handleTimeChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
+      this.setTime = this.setTime.bind(this);
 
   }
 
   async handleTimeChange(e) {
     await this.setState({punchTime: e.target.value});
-    this.onSubmit();
+    this.updateText();
   }
 
   async handleHourChangeOne(value) {
     await this.setState({currentHours: value});
-    this.onSubmit();
+    this.updateText();
   }
 
   async handleHourChangeTwo(value) {
     await this.setState({hoursNeeded: value});
-    this.onSubmit();
+    this.updateText();
+  }
+
+  updateText(){
+    if(this.state.lastPressed === "submit"){
+      this.onSubmit();
+    }
+    else{
+      this.getTimes();
+    }
+
   }
 
   async showButtonsChange(e) {
@@ -41,6 +53,7 @@ export default class MainComp extends React.Component {
   }
 
   onSubmit() {
+    this.setState({lastPressed: "submit"});
     var newDate = this.generateDate(); 
 
     var useMinutes = false;
@@ -62,6 +75,8 @@ export default class MainComp extends React.Component {
   }
 
   getTimes(){
+    this.setState({lastPressed: "getTimes"});
+
     var times = []; 
     var newDate = this.generateDate();
     for(var i = 0; i < 8; i++){
@@ -96,6 +111,15 @@ export default class MainComp extends React.Component {
     return new Date(`${mm} ${dd}, ${yyyy} ${this.state.punchTime}`);
   }
 
+  async setTime(){
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    currentTime = String(hours + ":" + minutes);
+    await this.setState({punchTime: currentTime});
+    this.getTimes();
+  }
+
   render() {
     return (
         <div className={"inlineBlock"}>
@@ -110,27 +134,41 @@ export default class MainComp extends React.Component {
             <br />
             <label className={"tinyText noMargin noPadding"}>Show Radios</label>
             <p>When did you punch in?</p>
-            <input
-              type="text"
-              value={this.state.punchTime}
-              onChange={this.handleTimeChange}
-              className={"smallInput"}
-              style={{fontSize: "20px", textAlign: "left", paddingLeft: "3px"}} >
-
-              </input>
+            <button
+              style={{
+                      float:"left",
+                      transform:"translateX(70px)",
+                      width:"140px"
+                    }}
+              onClick={this.setTime}>
+              Now?
+            </button>
             
-            <label> 24 Hour</label>
             <br />
-            <input
-              type="time"
-              value={this.state.punchTime}
-              onChange={this.handleTimeChange}
-              tabIndex="1"
-              style={{fontSize: "20px"}} >
+            <div className={"hoverReveal"} style={{transform: "translateX(35px)"}}>
+              <input
+                type="text"
+                value={this.state.punchTime}
+                onChange={this.handleTimeChange}
+                className={"smallInput"}
+                style={{fontSize: "20px", textAlign: "left", paddingLeft: "3px"}} >
 
-              </input>
-            
-            <label> 12 Hour</label>
+                </input>
+              
+              <label className={"opacity0"}> 24 Hour</label>
+            </div>
+            <div className={"hoverReveal"} style={{transform: "translateX(35px)"}}>
+              <input
+                type="time"
+                value={this.state.punchTime}
+                onChange={this.handleTimeChange}
+                tabIndex="1"
+                style={{fontSize: "20px", padding: "3px 3px 3px 2px"}} >
+
+                </input>
+              
+              <label className={"opacity0"}> 12 Hour</label>
+            </div>
             <br />
             <br />
           </div>
