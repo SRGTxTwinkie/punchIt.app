@@ -147,19 +147,19 @@ export default class MainComp extends React.Component {
             </button>
             
             <br />
-            <div className={"hoverReveal"} style={{transform: "translateX(35px)"}}>
+            <div className={"hoverReveal transform33"}>
               <input
                 type="text"
                 value={this.state.punchTime}
                 onChange={this.handleTimeChange}
                 className={"smallInput"}
-                style={{fontSize: "20px", textAlign: "left", paddingLeft: "3px"}} >
+                style={{fontSize: "20px", textAlign: "left", paddingLeft: "3px", marginLeft:"3px"}} >
 
                 </input>
               
               <label className={"opacity0"}> 24 Hour</label>
             </div>
-            <div className={"hoverReveal"} style={{transform: "translateX(35px)"}}>
+            <div className={"hoverReveal transform33"}>
               <input
                 type="time"
                 value={this.state.punchTime}

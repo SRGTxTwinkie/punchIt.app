@@ -117,3 +117,7 @@ body {
     opacity: 0;
     transition: all 0.5s ease-in-out;
 }
+
+.transform33 {
+    transform: translateX(33px);
+}
