@@ -12,7 +12,7 @@ function Footer() {
                         width="50px" 
                         style={{opacity: "0.3"}}/>
                 </a>
-                <a href="https://www.linkedin.com/in/sarah-robertson-8a9b7b1a4/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/zane-reisbig-328119200/" target="_blank" rel="noopener noreferrer">
                     <img
                         src={logo}
                         alt="LinkedIn"
